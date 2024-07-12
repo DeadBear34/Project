@@ -9,16 +9,16 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
     .button-container {
-  width: 100%; /* Menggunakan lebar maksimum */
-  margin-top: 10px; /* Jarak antara tombol di bagian atas */
+  width: 100%;
+  margin-top: 10px; 
 }
 
 .button-container .btn {
-  width: 100%; /* Tombol mengisi lebar container */
+  width: 100%; 
   padding: 10px;
   text-align: center;
   white-space: nowrap;
-  max-width: 150px; /* Sesuaikan jika perlu */
+  max-width: 150px; 
 }
   </style>
 </head>
