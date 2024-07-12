@@ -1,4 +1,4 @@
-package Servlet;
+.package Servlet;
 
 import Database.DbConnection;
 import java.io.IOException;
@@ -53,7 +53,7 @@ public class RegisterServlet extends HttpServlet {
             stmt.setString(6, hashedPassword);
             int rowsInserted = stmt.executeUpdate();
             if (rowsInserted > 0) {
-                RequestDispatcher rd = request.getRequestDispatcher("ObatServlet?action=list&page=user_home");
+                RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
                 HttpSession session = request.getSession();
                 session.setAttribute("user", username);
                 session.setAttribute("username", username);
