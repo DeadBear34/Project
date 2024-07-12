@@ -54,9 +54,6 @@ public class RegisterServlet extends HttpServlet {
             int rowsInserted = stmt.executeUpdate();
             if (rowsInserted > 0) {
                 RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-                HttpSession session = request.getSession();
-                session.setAttribute("user", username);
-                session.setAttribute("username", username);
                 rd.forward(request, response);
             } else {
                 response.sendRedirect("error.jsp");
