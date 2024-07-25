@@ -33,20 +33,35 @@ public class ProductServlet extends HttpServlet {
             case "new":
                 showNewForm(request, response);
                 break;
-            case "insert":
-                insertProduct(request, response);
-                break;
             case "edit":
                 showEditForm(request, response);
-                break;
-            case "update":
-                updateProduct(request, response);
                 break;
             case "delete":
                 deleteProduct(request, response);
                 break;
             default:
                 listProducts(request, response);
+                break;
+        }
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String action = request.getParameter("action");
+
+        if (action == null) {
+            action = "list"; // default action
+        }
+
+        switch (action) {
+            case "insert":
+                insertProduct(request, response);
+                break;
+            case "update":
+                updateProduct(request, response);
+                break;
+            default:
+                doGet(request, response); // fallback to doGet for other actions
                 break;
         }
     }
@@ -101,7 +116,6 @@ public class ProductServlet extends HttpServlet {
 
         if (idStr != null && name != null && priceStr != null && imageUrl != null && category != null) {
             try {
-                int id = Integer.parseInt(idStr);
                 double price = Double.parseDouble(priceStr);
                 Product updatedProduct = new Product(idStr, name, price, imageUrl, category);
                 productDAO.updateProduct(updatedProduct);
@@ -127,15 +141,4 @@ public class ProductServlet extends HttpServlet {
             }
         }
     }
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-    String action = request.getParameter("action");
-
-    if ("insert".equals(action)) {
-        insertProduct(request, response);
-    } else {
-    }
-}
-
 }
