@@ -129,7 +129,13 @@ public class ProductServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        doGet(request, response);
+        throws ServletException, IOException {
+    String action = request.getParameter("action");
+
+    if ("insert".equals(action)) {
+        insertProduct(request, response);
+    } else {
     }
+}
+
 }
